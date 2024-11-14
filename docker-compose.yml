@@ -1,0 +1,18 @@
+version: '2.29'
+
+
+services:
+  app:
+    build: .
+    ports:
+      - '80:5000'
+    depends_on:
+      - db
+    restart: always
+  
+  db:
+    image: postgres:alpine
+    ports:
+      - '5431:5432'
+    env_file:
+      - ./app/.env
